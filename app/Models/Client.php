@@ -21,4 +21,18 @@ class Client extends Model
      * @var bool
      */
     public $timestamps = false;
+
+    /**
+     * The relationships that should always be loaded.
+     *
+     * @var array
+     */
+    protected $with = [
+        'user',
+    ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
