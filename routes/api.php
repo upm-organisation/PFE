@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\AuthenticationController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClientController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +26,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
         'clients' => ClientController::class,
     ]);
 // });
-Route::post('login', function (Request $request) {
-    
-});
+Route::post('login', [AuthenticationController::class, 'authenticate']);
