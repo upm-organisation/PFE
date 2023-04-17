@@ -66,7 +66,7 @@ class ClientController extends Controller
         }
         return response()->json(
             [
-                'result' => $client,
+                'result' => $result,
                 'status' => $status,
             ],
             $status
@@ -102,9 +102,22 @@ class ClientController extends Controller
      * @param  \App\Models\Client  $client
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Client $client)
+    public function update(ClientRequest $request, Client $client)
     {
-        //
+        if ($client->update($request->all())) {
+            $result = $client;
+            $status = 200;
+        } else {
+            $result = null;
+            $status = 500;
+        }
+        return response()->json(
+            [
+                'result' => $result,
+                'status' => $status,
+            ],
+            $status
+        );
     }
 
     /**
