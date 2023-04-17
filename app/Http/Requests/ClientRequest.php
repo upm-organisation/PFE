@@ -5,6 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 use App\Models\User;
+use Illuminate\Http\Request;
 
 class ClientRequest extends FormRequest
 {
@@ -25,15 +26,7 @@ class ClientRequest extends FormRequest
      */
     public function rules()
     {
-        $users_ids = User::all()->map(function ($user, $index) {
-            return $user->id;
-        });
-        return [
-            'user_id' => [
-                'required',
-                'numeric',
-                Rule::in($users_ids),
-            ],
+        $rules = [
             'notes' => [
                 'sometimes',
                 'numeric',
@@ -41,5 +34,16 @@ class ClientRequest extends FormRequest
                 'max:5',
             ],
         ];
+        if ($this->method() == Request::METHOD_POST) {
+            $users_ids = User::all()->map(function ($user, $index) {
+                return $user->id;
+            });
+            $rules['user_id'] = [
+                'required',
+                'numeric',
+                Rule::in($users_ids),
+            ];
+        }
+        return $rules;
     }
 }
