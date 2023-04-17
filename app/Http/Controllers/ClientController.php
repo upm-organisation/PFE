@@ -128,6 +128,19 @@ class ClientController extends Controller
      */
     public function destroy(Client $client)
     {
-        //
+        if ($client->delete()) {
+            $result = $client;
+            $status = 200;
+        } else {
+            $result = null;
+            $status = 500;
+        }
+        return response()->json(
+            [
+                'result' => $result,
+                'status' => $status,
+            ],
+            $status
+        );
     }
 }
