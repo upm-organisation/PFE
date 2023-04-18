@@ -86,18 +86,31 @@ class EmployeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(EmployeRequest $request, Employee $employee)
     {
-        //
+        if ($employee->update($request->all())) {
+            $result = $employee;
+            $status = 200;
+        } else {
+            $result = null;
+            $status = 500;
+        }
+        return response()->json(
+            [
+                'result' => $result,
+                'status' => $status,
+            ],
+            $status
+        );
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Employee  $employee
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Employee $employee)
     {
         //
     }
