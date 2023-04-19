@@ -81,7 +81,13 @@ class ClientController extends Controller
      */
     public function show(Client $client)
     {
-        //
+        return response()->json(
+            [
+                'result' => $client,
+                'status' => 200,
+            ],
+            200
+        );
     }
 
     /**
