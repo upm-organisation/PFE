@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClientController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\EmployeController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +27,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     Route::resources([
         'clients' => ClientController::class,
         'employees' => EmployeController::class,
+        'users' => UserController::class,
     ]);
 // });
 Route::post('login', [AuthenticationController::class, 'authenticate']);
