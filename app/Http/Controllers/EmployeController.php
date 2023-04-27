@@ -112,6 +112,19 @@ class EmployeController extends Controller
      */
     public function destroy(Employee $employee)
     {
-        //
+        if ($employee->delete()) {
+            $result = $employee;
+            $status = 200;
+        } else {
+            $result = null;
+            $status = 500;
+        }
+        return response()->json(
+            [
+                'result' => $result,
+                'status' => $status,
+            ],
+            $status
+        );
     }
 }
