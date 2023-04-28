@@ -7,6 +7,7 @@ use App\Http\Controllers\ClientController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\EmployeController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\RoomController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +29,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
         'clients' => ClientController::class,
         'employees' => EmployeController::class,
         'users' => UserController::class,
+        'rooms' => RoomController::class,
     ]);
 // });
 Route::post('login', [AuthenticationController::class, 'authenticate']);
