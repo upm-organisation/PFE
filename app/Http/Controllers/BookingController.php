@@ -87,7 +87,20 @@ class BookingController extends Controller
      */
     public function update(Request $request, Booking $booking)
     {
-        //
+        if ($booking->update($request->all())) {
+            $result = $booking;
+            $status = 200;
+        } else {
+            $result = null;
+            $status = 500;
+        }
+        return response()->json(
+            [
+                'result' => $result,
+                'status' => $status,
+            ],
+            $status
+        );
     }
 
     /**
