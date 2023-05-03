@@ -9,7 +9,7 @@ use App\Http\Controllers\EmployeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\BookingController;
-use App\Http\Controllers\AccessorieController;
+use App\Http\Controllers\AccessoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,7 +33,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
         'users' => UserController::class,
         'rooms' => RoomController::class,
         'bookings' => BookingController::class,
-        'accessories' => AccessorieController::class,
+        'accessories' => AccessoryController::class,
     ]);
 // });
 Route::post('login', [AuthenticationController::class, 'authenticate']);
