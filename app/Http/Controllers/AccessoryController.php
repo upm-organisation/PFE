@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Accessorie;
+use App\Models\Accessory;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Http\Requests\AccessorieRequest;
+use App\Http\Requests\AccessoryRequest;
 
-class AccessorieController extends Controller
+class AccessoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -35,13 +35,13 @@ class AccessorieController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(AccessorieRequest $request)
+    public function store(AccessoryRequest $request)
     {
-        $accessorie = Accessorie::create(
+        $accessory = Accessory::create(
             $request->all()
         );
-        if ($accessorie) {
-            $result = $accessorie;
+        if ($accessory) {
+            $result = $accessory;
             $status = 200;
         } else {
             $result = null;
@@ -59,10 +59,10 @@ class AccessorieController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Accessorie  $accessorie
+     * @param  \App\Models\Accessory  $accessory
      * @return \Illuminate\Http\Response
      */
-    public function show(Accessorie $accessorie)
+    public function show(Accessory $accessory)
     {
         //
     }
@@ -70,10 +70,10 @@ class AccessorieController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Accessorie  $accessorie
+     * @param  \App\Models\Accessory  $accessory
      * @return \Illuminate\Http\Response
      */
-    public function edit(Accessorie $accessorie)
+    public function edit(Accessory $accessory)
     {
         //
     }
@@ -82,21 +82,34 @@ class AccessorieController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Accessorie  $accessorie
+     * @param  \App\Models\Accessory  $accessory
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Accessorie $accessorie)
-    {
-        //
+    public function update(Request $request, Accessory $accessory)
+    {        
+        if ($accessory->update($request->all())) {
+            $result = $accessory;
+            $status = 200;
+        } else {
+            $result = null;
+            $status = 500;
+        }
+        return response()->json(
+            [
+                'result' => $result,
+                'status' => $status,
+            ],
+            $status
+        );
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Accessorie  $accessorie
+     * @param  \App\Models\Accessory  $accessory
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Accessorie $accessorie)
+    public function destroy(Accessory $accessory)
     {
         //
     }

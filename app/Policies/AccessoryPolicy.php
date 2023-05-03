@@ -3,10 +3,10 @@
 namespace App\Policies;
 
 use Illuminate\Auth\Access\HandlesAuthorization;
-use App\Models\Accessorie;
+use App\Models\Accessory;
 use App\Models\User;
 
-class AccessoriePolicy
+class AccessoryPolicy
 {
     use HandlesAuthorization;
 
@@ -25,10 +25,10 @@ class AccessoriePolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Accessorie  $accessorie
+     * @param  \App\Models\Accessory  $accessory
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, Accessorie $accessorie)
+    public function view(User $user, Accessory $accessory)
     {
         //
     }
@@ -48,10 +48,10 @@ class AccessoriePolicy
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Accessorie  $accessorie
+     * @param  \App\Models\Accessory  $accessory
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, Accessorie $accessorie)
+    public function update(User $user, Accessory $accessory)
     {
         //
     }
@@ -60,10 +60,10 @@ class AccessoriePolicy
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Accessorie  $accessorie
+     * @param  \App\Models\Accessory  $accessory
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, Accessorie $accessorie)
+    public function delete(User $user, Accessory $accessory)
     {
         //
     }
@@ -72,10 +72,10 @@ class AccessoriePolicy
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Accessorie  $accessorie
+     * @param  \App\Models\Accessory  $accessory
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, Accessorie $accessorie)
+    public function restore(User $user, Accessory $accessory)
     {
         //
     }
@@ -84,10 +84,10 @@ class AccessoriePolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Accessorie  $accessorie
+     * @param  \App\Models\Accessory  $accessory
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, Accessorie $accessorie)
+    public function forceDelete(User $user, Accessory $accessory)
     {
         //
     }
