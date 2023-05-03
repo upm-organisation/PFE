@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\EmployeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RoomController;
+use App\Http\Controllers\BookingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +31,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
         'employees' => EmployeController::class,
         'users' => UserController::class,
         'rooms' => RoomController::class,
+        'bookings' => BookingController::class,
     ]);
 // });
 Route::post('login', [AuthenticationController::class, 'authenticate']);
