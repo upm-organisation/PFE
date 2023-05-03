@@ -16,7 +16,13 @@ class BookingController extends Controller
      */
     public function index()
     {
-        //
+        $bookings = Booking::all();
+        return response()->json(
+            [
+                'result' => $bookings,
+            ],
+            200
+        );
     }
 
     /**
