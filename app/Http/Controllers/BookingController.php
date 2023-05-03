@@ -85,7 +85,7 @@ class BookingController extends Controller
      * @param  \App\Models\Booking  $booking
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Booking $booking)
+    public function update(BookingRequest $request, Booking $booking)
     {
         if ($booking->update($request->all())) {
             $result = $booking;
@@ -111,6 +111,19 @@ class BookingController extends Controller
      */
     public function destroy(Booking $booking)
     {
-        //
+        if ($booking->delete()) {
+            $result = $booking;
+            $status = 200;
+        } else {
+            $result = null;
+            $status = 500;
+        }
+        return response()->json(
+            [
+                'result' => $result,
+                'status' => $status,
+            ],
+            $status
+        );
     }
 }
