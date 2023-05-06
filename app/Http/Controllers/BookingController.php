@@ -70,7 +70,13 @@ class BookingController extends Controller
      */
     public function show(Booking $booking)
     {
-        //
+        return response()->json(
+            [
+                'result' => $booking,
+                'status' => 200,
+            ],
+            200
+        );
     }
 
     /**

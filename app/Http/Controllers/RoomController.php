@@ -70,7 +70,13 @@ class RoomController extends Controller
      */
     public function show(Room $room)
     {
-        //
+        return response()->json(
+            [
+                'result' => $room,
+                'status' => 200,
+            ],
+            200
+        );
     }
 
     /**
