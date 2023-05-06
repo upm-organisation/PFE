@@ -44,7 +44,7 @@ class UserController extends Controller
      */
     public function store(UserResquest $request)
     {
-        $email = $request->name . '.' . $request->LastName . '@hotel.com';
+        $email = $request->name . '.' . $request->lastName . '@hotel.com';
         $password = Hash::make($request->name . '.' . $request->LastName);
         $request->merge([
             'email' => $email,
