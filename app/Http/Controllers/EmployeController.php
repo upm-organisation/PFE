@@ -15,9 +15,13 @@ class EmployeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $employees = Employee::all();
+        $employees = Employee::
+        when($request->role, function ($query, $role) {
+            $query->where('role', $role);
+        })
+        ->get();
         return response()->json(
             [
                 'result' => $employees,
