@@ -15,4 +15,28 @@ class Booking extends Model
     protected $guarded = [
         'id',
     ];
+
+    /**
+     * The relationships that should always be loaded.
+     *
+     * @var array
+     */
+    protected $with = [
+        'employee',
+        'client',
+        'room',
+    ];
+    
+    public function employee()
+    {
+        return $this->belongsTo(Employee::class);
+    }
+    public function client()
+    {
+        return $this->belongsTo(Client::class);
+    }
+    public function room()
+    {
+        return $this->belongsTo(Room::class);
+    }
 }
