@@ -6,6 +6,7 @@ use App\Models\Booking;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\BookingRequest;
+use App\Models\Room;
 
 class BookingController extends Controller
 {
@@ -136,6 +137,24 @@ class BookingController extends Controller
                 'status' => $status,
             ],
             $status
+        );
+    }
+    public function checkAvailability(Request $request)
+    {
+        $startDate = $request->startDate;
+        $endDate = $request->endDate;
+        $reserved = false;
+        $bookings = Room::find($request->id)->bookings;
+        foreach ($bookings as $booking) {
+            if (($booking->startDate < $endDate && $booking->endDate > $endDate) || ($booking->startDate < $startDate && $booking->endDate > $startDate)) {
+                $reserved = true;
+                break;
+            }
+        }
+        return response()->json(
+            [
+                'result' => $reserved,
+            ]
         );
     }
 }
